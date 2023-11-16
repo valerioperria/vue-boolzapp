@@ -1,0 +1,105 @@
+@media screen and (min-width: 768px) {
+    #container {
+        width: 540px;
+    }
+
+    #people {
+        display: inline-block;
+        width: 81px;
+        height: 100%;
+        border-right: 1px solid rgba(0, 0, 0, 0.353);
+    }
+
+    #people .new-message,
+    #people .search {
+        display: none;
+    }
+
+    #people .header,
+    #people .header .img,
+    #people .main .user,
+    #people .main .user .img {
+        height: 80px;
+        width: 80px;
+    }
+
+    #people .header {
+        background-color: rgb(233, 233, 233);
+    }
+
+    #people .main {
+        height: calc(100vh - 80px - 4rem);
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    #people .main:hover {
+        overflow-y: scroll;
+    }
+
+    #people .main .user {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.353);
+    }
+
+    #people .main .user:hover {
+        background-color: rgba(0, 0, 0, 0.103);
+    }
+
+    #people .main .user .info,
+    #people .main .user .hour,
+    #people .header .tool {
+        display: none;
+    }
+
+    #chat {
+        width: 460px;
+    }
+
+    #chat .header .img {
+        flex-shrink: 1;
+    }
+
+    #chat .header .info {
+        width: 100%;
+        flex-grow: 1;
+    }
+
+    #chat .header .tool {
+        display: flex;
+        height: 100%;
+        width: 100px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 20px;
+    }
+
+    #chat .main .my-message,
+    #chat .main .your-message {
+        width: 60%;
+    }
+
+    #chat .footer {
+        display: flex;
+    }
+
+    #chat .footer .write {
+        width: 100%;
+        flex-grow: 1;
+    }
+
+    #chat .footer .write input {
+        width: 100%;
+    }
+
+    #chat .footer .emoticon,
+    #chat .footer .audio {
+        display: flex;
+        height: 80px;
+        width: 90px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        color: rgba(0, 0, 0, 0.605);
+    }
+}

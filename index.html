@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzap</title>
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/tablet.css">
+    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="wrapper">
+            <div class="green-bg"></div>
+            <div class="beige-bg"></div>
+            <div id="container">
+                <!-- people box -->
+                <div id="people">
+                    <div class="header">
+                        <div class="img"><img src="img/avatar_io.jpg" alt=""></div>
+                        <div class="tool">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+
+                    <div class="new-message">
+                        <div class="img">
+                            <div class="around"><i class="fa-solid fa-bell-slash"></i></div>
+                        </div>
+                        <div class="info">
+                            <div class="info">
+                                <h4>Ricevi notifiche</h4>
+                                <span><a href="">Notifiche Desktop</a></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search">
+                        <div class="search-box">
+                            <label for="search-message"><i class="fa-solid fa-magnifying-glass"></i></label>
+                            <input type="search" id="search-message" placeholder="cerca o inizia nuova chat">
+                        </div>
+                    </div>
+
+                    <div class="main">
+
+                        <div class="user" v-for="(tizio, index) in contacts"
+                            :class="(index == indexChat) ? 'active' : ''" @click="selectChat(index)">
+                            <div class="img"><img :src="`img/avatar${tizio.avatar}.jpg`" alt=""></div>
+                            <div class="info">
+                                <h4>{{ tizio.name }}</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- chat box -->
+                <div id="chat">
+                    <div class="header">
+                        <div class="user">
+                            <img :src="`img/avatar${contacts[indexChat].avatar}.jpg`" alt="">
+                        </div>
+                        <div class="info">
+                            <h4>{{ contacts[indexChat].name }}</h4>
+                            <span>Ultimo accesso oggi alle 16:26</span>
+                        </div>
+                        <div class="tool">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+
+                    <div class="main">
+                        <div v-for="msg in contacts[indexChat].messages"
+                            :class="(msg.status == currentStatus) ? 'my-message' : 'your-message'">
+                            <div class="text">
+                                <p>{{ msg.message }}</p>
+                            </div>
+                            <div class="menu">
+                                <div class="msg-menu">
+                                    <i class="fa-solid fa-chevron-down">
+                                        <ul class="sub-menu">
+                                            <li class="info-messaggio">Info messaggio</li>
+                                            <li class="cancella-messaggio">Cancella messaggio</li>
+                                        </ul>
+                                    </i>
+                                </div>
+                                <div class="msg-hour">
+                                    <span>{{ msg.date }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer">
+                        <div class="emoticon tool">
+                            <i class="fa-regular fa-face-smile"></i>
+                        </div>
+                        <div class="write"><input type="text" placeholder="Scrivi un messaggio"></div>
+                        <div class="audio tool">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
