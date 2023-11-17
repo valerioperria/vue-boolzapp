@@ -5,6 +5,8 @@ createApp({
         return {
             indexChat: 0,
             currentStatus: 'sent',
+            newMessage: "",
+            searchContact: "",
             contacts: [
                 {
                     name: 'Michele',
@@ -172,8 +174,42 @@ createApp({
         }
     },
     methods: {
-        selectChat: function (index) {
+        selectChat(index) {
             this.indexChat = index;
+            console.log(this.indexChat)
+        },
+
+        addMessage() {
+            console.log(this.newMessage)
+            console.log(this.indexChat)
+            if (this.newMessage !== "") {
+                this.contacts[this.indexChat].messages.push({
+                    date: "",
+                    message: this.newMessage,
+                    status: "sent"
+                });
+                this.newMessage = "";
+                setTimeout(this.addAnswer, 1000);
+            }
+        },
+
+        addAnswer() {
+            this.contacts[this.indexChat].messages.push({
+                date: "",
+                message: "ok",
+                status: "received"
+            });
+        },
+
+        searchUser() {
+            let textSearch = this.searchContact.toLowerCase();
+            this.contacts.forEach(element => {
+                if(element.name.toLowerCase().includes(textSearch)){
+                    element.visible = true
+                } else {
+                    element.visible = false
+                }
+            });
         }
     }
 }).mount('#app')

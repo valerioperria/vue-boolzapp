@@ -49,14 +49,16 @@
                     <div class="search">
                         <div class="search-box">
                             <label for="search-message"><i class="fa-solid fa-magnifying-glass"></i></label>
-                            <input type="search" id="search-message" placeholder="cerca o inizia nuova chat">
+                            <input type="search" id="search-message" placeholder="cerca o inizia nuova chat" v-model="searchContact" @keyup="searchUser">
                         </div>
                     </div>
 
                     <div class="main">
 
                         <div class="user" v-for="(tizio, index) in contacts"
-                            :class="(index == indexChat) ? 'active' : ''" @click="selectChat(index)">
+                            :class="(index == indexChat) ? 'active' : ''" @click="selectChat(index)"
+                            v-show="tizio.visible"
+                           >
                             <div class="img"><img :src="`img/avatar${tizio.avatar}.jpg`" alt=""></div>
                             <div class="info">
                                 <h4>{{ tizio.name }}</h4>
@@ -108,7 +110,11 @@
                         <div class="emoticon tool">
                             <i class="fa-regular fa-face-smile"></i>
                         </div>
-                        <div class="write"><input type="text" placeholder="Scrivi un messaggio"></div>
+                        <div class="write">
+                            <label for="new-message"></label>
+                            <input type="text" id="new-message" placeholder="Scrivi un messaggio"
+                                v-model.trim="newMessage" @keyup.enter="addMessage">
+                        </div>
                         <div class="audio tool">
                             <i class="fa-solid fa-microphone"></i>
                         </div>
