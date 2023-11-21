@@ -56,12 +56,12 @@
 
                     <div class="main">
 
-                        <div class="user" v-for="(tizio, index) in contacts"
+                        <div class="user" v-for="(person, index) in contacts"
                             :class="(index == indexChat) ? 'active' : ''" @click="selectChat(index)"
-                            v-show="tizio.visible">
-                            <div class="img"><img :src="`img/avatar${tizio.avatar}.jpg`" alt=""></div>
+                            v-show="person.visible">
+                            <div class="img"><img :src="`img/avatar${person.avatar}.jpg`" alt=""></div>
                             <div class="info">
-                                <h4>{{ tizio.name }}</h4>
+                                <h4>{{ person.name }}</h4>
                             </div>
                         </div>
 
